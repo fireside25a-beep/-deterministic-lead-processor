@@ -1,0 +1,42 @@
+Lead Processor Clang Final Validation
+=====================================
+UTC: 2026-07-20T06:20:17Z
+clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 10999b6d034fe318f3d56c83bddb6572593a8bb0)
+
+rm -rf build
+mkdir -p build
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/main.c -o build/main.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/lead.c -o build/lead.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/csv_reader.c -o build/csv_reader.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/config.c -o build/config.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/lead_rules.c -o build/lead_rules.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/json_validator.c -o build/json_validator.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/lead_router.c -o build/lead_router.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/model_client.c -o build/model_client.o
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror -c src/lead_processor.c -o build/lead_processor.o
+clang -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror build/main.o build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/lead_processor -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_lead.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_lead -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_config.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_config -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_csv.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_csv -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_area.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_area -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_pricing.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_pricing -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_schema.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_schema -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_router.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_router -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_model_client.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_model_client -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_pipeline.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_pipeline -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+clang -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O2 -Wall -Wextra -Wpedantic -Werror tests/test_demo_csv.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o  -o build/test_demo_csv -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+test_lead: PASS
+test_config: PASS
+test_csv: PASS
+test_area: PASS
+test_pricing: PASS
+test_schema: PASS
+test_router: PASS
+test_model_client: PASS
+test_pipeline: PASS
+demo comparison: exact=18 tolerance=1 mismatch=0 ambiguous=1 impossible=0 unscored_fields=60 retried=1 manual_review=0
+test_demo_csv: PASS
+validate_jsonl: PASS (20 object(s))
+validate_jsonl: PASS (1 object(s))
+test_live_http: PASS
+smoke: PASS

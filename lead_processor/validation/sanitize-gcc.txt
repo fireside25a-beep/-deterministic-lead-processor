@@ -1,0 +1,50 @@
+Lead Processor GCC Sanitizer Final Validation
+=============================================
+UTC: 2026-07-20T06:20:33Z
+gcc (Debian 14.2.0-19) 14.2.0
+
+make clean
+make[1]: Entering directory '/mnt/data/lead_processor_build/lead_processor'
+rm -rf build
+make[1]: Leaving directory '/mnt/data/lead_processor_build/lead_processor'
+make all test smoke \
+  CFLAGS='-std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer' \
+  LDFLAGS='-fsanitize=address,undefined'
+make[1]: Entering directory '/mnt/data/lead_processor_build/lead_processor'
+mkdir -p build
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/main.c -o build/main.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/lead.c -o build/lead.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/csv_reader.c -o build/csv_reader.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/config.c -o build/config.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/lead_rules.c -o build/lead_rules.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/json_validator.c -o build/json_validator.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/lead_router.c -o build/lead_router.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/model_client.c -o build/model_client.o
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -c src/lead_processor.c -o build/lead_processor.o
+gcc -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer build/main.o build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/lead_processor -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_lead.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_lead -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_config.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_config -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_csv.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_csv -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_area.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_area -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_pricing.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_pricing -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_schema.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_schema -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_router.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_router -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_model_client.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_model_client -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_pipeline.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_pipeline -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+gcc -D_POSIX_C_SOURCE=200809L -Iinclude -Ithird_party -std=c11 -O1 -g -Wall -Wextra -Wpedantic -Werror -fsanitize=address,undefined -fno-omit-frame-pointer tests/test_demo_csv.c build/lead.o build/csv_reader.o build/config.o build/lead_rules.o build/json_validator.o build/lead_router.o build/model_client.o build/lead_processor.o -fsanitize=address,undefined -o build/test_demo_csv -lcurl /lib/x86_64-linux-gnu/libcjson.so.1 -lm
+test_lead: PASS
+test_config: PASS
+test_csv: PASS
+test_area: PASS
+test_pricing: PASS
+test_schema: PASS
+test_router: PASS
+test_model_client: PASS
+test_pipeline: PASS
+demo comparison: exact=18 tolerance=1 mismatch=0 ambiguous=1 impossible=0 unscored_fields=60 retried=1 manual_review=0
+test_demo_csv: PASS
+validate_jsonl: PASS (20 object(s))
+validate_jsonl: PASS (1 object(s))
+test_live_http: PASS
+smoke: PASS
+make[1]: Leaving directory '/mnt/data/lead_processor_build/lead_processor'

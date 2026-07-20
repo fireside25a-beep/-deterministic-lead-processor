@@ -1,0 +1,22 @@
+Lead Processor Static Release Audit
+===================================
+UTC: 2026-07-20T06:21:22Z
+
+[No unfinished markers]
+PASS
+
+[No unsafe shell/process calls in C code]
+PASS
+
+[No likely embedded provider secret]
+PASS
+.env.example key is empty: PASS
+
+[C/header/Python source files <= 600 lines]
+PASS
+
+[Python syntax]
+PASS
+
+[Required files]
+PASS

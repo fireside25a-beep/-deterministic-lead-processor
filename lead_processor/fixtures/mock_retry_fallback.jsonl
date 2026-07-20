@@ -1,0 +1,5 @@
+{"lead_id":"retry","raw":"bad json one"}
+{"lead_id":"retry","response":{"fit":true,"fitReason":"Floor coating request","space":"garage","sqft":500,"inArea":true,"urgency":"medium","summary":"Garage coating","estimate":null,"nextStep":"Book assessment","draftReply":"Hello"}}
+{"lead_id":"fallback","raw":"bad one"}
+{"lead_id":"fallback","raw":"bad two"}
+{"lead_id":"fallback","raw":"bad three"}

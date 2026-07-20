@@ -1,0 +1,58 @@
+lead_processor/
+├── include/
+│   ├── config.h
+│   ├── csv_reader.h
+│   ├── json_validator.h
+│   ├── lead.h
+│   ├── lead_processor.h
+│   ├── lead_router.h
+│   ├── lead_rules.h
+│   └── model_client.h
+├── src/
+│   ├── config.c
+│   ├── csv_reader.c
+│   ├── json_validator.c
+│   ├── lead.c
+│   ├── lead_processor.c
+│   ├── lead_router.c
+│   ├── lead_rules.c
+│   ├── main.c
+│   └── model_client.c
+├── tests/
+│   ├── test_area.c
+│   ├── test_config.c
+│   ├── test_csv.c
+│   ├── test_demo_csv.c
+│   ├── test_lead.c
+│   ├── test_live_http.py
+│   ├── test_model_client.c
+│   ├── test_pipeline.c
+│   ├── test_pricing.c
+│   ├── test_router.c
+│   ├── test_schema.c
+│   └── validate_jsonl.py
+├── fixtures/
+│   ├── csv_edge_cases.csv
+│   ├── invalid_config_fractional.json
+│   ├── invalid_config_price.json
+│   ├── expected_results.jsonl
+│   ├── mock_model_responses.jsonl
+│   └── mock_retry_fallback.jsonl
+├── config/
+│   └── default_config.json
+├── third_party/
+│   └── cJSON.h
+├── validation/
+│   ├── clang.txt
+│   ├── gcc.txt
+│   ├── sanitize-gcc.txt
+│   └── static-audit.txt
+├── .env.example
+├── .gitignore
+├── LICENSE
+├── Makefile
+├── PROJECT_TREE.txt
+├── README.md
+├── THIRD_PARTY_NOTICES.md
+├── VALIDATION_REPORT.md
+└── workbelt-leads-demo.csv

@@ -1,0 +1,3 @@
+﻿lead_id;channel;customer_name;city;phone;email;source;message
+edge-1;whatsapp;Zoë Martin;Montréal;(604) 555-0199;;WhatsApp;"Need a garage; about 20 by 30 feet"
+edge-2;email;"O""Connor, Pat";;;PAT@EXAMPLE.COM;Website;"Quoted ""word"" and UTF-8: mètres carrés"
